@@ -97,10 +97,6 @@
 </div>
 
 
-
-
-<script type="text/javascript" src="../js/modal.js"></script>
-
 <script> 
 //Script to use number on input[type=text] , input[type=number] can't use maxlength
 function inputNumber(id) {

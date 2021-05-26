@@ -14,186 +14,135 @@
 </head>
 <body>
 
-    <ul class="ulNav">
-    <li class="liNav"><a class="active" href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
-    <li class="liNav"><a href="panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
-    <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
-    <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
-    <li></li>
-    <?php
-        if(isset($_SESSION['username'])):?>
+<ul class="ulNav">
+<li class="liNav"><a class="active" href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+<li class="liNav"><a href="panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
+<li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
+<li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
+<li></li>
+<?php
+    if(isset($_SESSION['username'])):?>
 
-        <li style="float:right"> <a href="logout.php">Logout</a></li>
-            <div class="dropdown" style="float:right">
-                <button class="dropbtn"><?php echo $_SESSION['username'] ."'s Profile";?></button>
-                <div class="dropdown-content">
-                    <a href="Profilesetting.php">Profile Setting</a>
-                    <a href="Reservation.php">My Reservation</a>
-                </div>
+        <li class="liNav" style="float:right"><a href="logout.php"> LOGOUT</a></li>
+        <div class="dropdown" style="float:right">
+            <button class="dropbtn" style="height: 55px;"><?php echo $_SESSION['username'] ."'s PROFILE";?></button>
+            <div class="dropdown-content">
+                <a href="#">Profile Setting</a>
+                <a href="#">Button 2</a>
             </div>
+        </div>
 
 
-        <?php
-        else:?>
-        <li style="float:right"><button class="slideButton" id="loginNav" style="padding : 10px">LOG IN</button></li>
-        <li style="float:right"><button class="slideButton" id="registerNav" style="padding : 10px">REGISTER</button></li>
-        <?php
-        endif;
-        ?>
-    </ul>
+    <?php
+    else:?>
+    <li style="float:right"><button class="slideButton" id="loginNav" style="padding : 10px">LOG IN</button></li> <!-- Homepage je pakai id loginNav and registerNav-->
+    <li style="float:right"><button class="slideButton" id="registerNav" style="padding : 10px">REGISTER</button></li> <!-- Page lain pakai id login and register-->
+    <?php
+    endif;
+    ?>
+</ul>
     
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="slideshow-container">
-
-                  
-                    <div class="mySlides fade">
-                      <div class="numbertext">1 / 2</div>
-                      <img src="../image/a.jpg" style="width:100%; height: 58em;">
-                      <div class="centeredContainer">
-                        <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
-                        <h1>WELCOME TO UPU ONLINE</h1><br>
-                      </div>
-                    </div>
-                    
-                    <div class="mySlides fade">
-                      <div class="numbertext">2 / 2</div>
-                      <img src="../image/vector.jpg" style="width:100%; height: 58em;">
-                      <div class="centeredContainer glass">
-                        <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
-                        <h1>WELCOME TO UPU ONLINE</h1><br>
-
-                        <button class="slideButton" id="registerHomepage">
-                          REGISTER
-                        </button> &nbsp;                   
-                        <button class="slideButton" id="loginHomepage">
-                          LOG IN
-                        </button>
-                        
-                      </div>
-                    </div>
-                    
-
-                    <div class="modal-container" id="register_modal">
-                      <div class="modal">
-                        <h1>REGISTER</h1>
-                        <p>
-                          INSERT FORMS HERE <br>
-                          <form>
-                            <label for="email"><b>Email</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required>
-
-                            <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required>
-
-                            <label for="psw-repeat"><b>Repeat Password</b></label>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                          </form>
-                        </p>
-                        <button class="buttonForm cancelbtn" id="closeRegister">Close</button>
-                        <button type="submit" class="buttonForm signupbtn">Sign Up</button>
-                      </div>
-                    </div>
-
-                    <div class="modal-container" id="login_modal">
-                      <div class="modal">
-                        <h1>LOG IN</h1>
-                        <p>
-                          INSERT FORMS HERE <br>
-                          <form>
-                            Username : <input type="text"><br>
-                            Password : <input type="password">
-                          </form>
-                        </p>
-                        <button class="buttonForm cancelbtn" id="closeLogin">Close</button>
-                        <button type="submit" class="buttonForm signupbtn">LOG IN</button>
-                      </div>
-                    </div>
-
-                
-                    
-
-                    
-                    </div>
-                    <br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="slideshow-container">             
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 2</div>
+                  <img src="../image/a.jpg" style="width:100%; height: 58em;">
+                  <div class="centeredContainer">
+                    <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
+                    <h1>WELCOME TO UPU ONLINE</h1><br>
+                  </div>
                 </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 2</div>
+                  <img src="../image/vector.jpg" style="width:100%; height: 58em;">
+                  <div class="centeredContainer glass">
+                    <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
+                    <h1>WELCOME TO UPU ONLINE</h1><br>
+
+                    <button class="slideButton" id="registerHomepage">
+                      REGISTER
+                    </button> &nbsp;                   
+                    <button class="slideButton" id="loginHomepage">
+                      LOG IN
+                    </button>
+                  </div>
+                </div>
+                
+                <?php include "layout/modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+
+                </div>
+                <br>
             </div>
         </div>
     </div>
-    <div id="footer">Syariff Kamil</div>
+</div>
+<div id="footer">Syariff Kamil</div>
 
 
-    <script>
-      var slideIndex = 0;
-      var active = true;
-      showSlides();
-      /* SLIDESHOW */
-      function showSlides() {
-        if (active == true){
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          slideIndex++;
-          if (slideIndex > slides.length) {slideIndex = 1}    
-          
-          slides[slideIndex-1].style.display = "block";  
-          
-          setTimeout(showSlides, 5000); // Change image every 2 seconds
-          }
-        }
+<script>
+  var slideIndex = 0;
+  var active = true;
+  showSlides();
+  /* SLIDESHOW */
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
     
-      /* MODAL FOR HOMEPAGE */
-      const registerNav = document.getElementById("registerNav");
-      const loginNav = document.getElementById("loginNav");
-      const registerHomepage = document.getElementById("registerHomepage");
-      const loginHomepage = document.getElementById("loginHomepage");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    
+    slides[slideIndex-1].style.display = "block";  
+    
+    var id = setTimeout(showSlides, 6000); // Change image every 2 seconds
+  }
 
-      const register_modal = document.getElementById('register_modal');
-      const login_modal = document.getElementById('login_modal');
+  /* MODAL FOR HOMEPAGE */
+  const registerNav = document.getElementById("registerNav");
+  const loginNav = document.getElementById("loginNav");
+  const registerHomepage = document.getElementById("registerHomepage");
+  const loginHomepage = document.getElementById("loginHomepage");
 
-      const closeRegister = document.getElementById('closeRegister');
-      const closeLogin = document.getElementById('closeLogin');
+  const register_modal = document.getElementById('register_modal');
+  const login_modal = document.getElementById('login_modal');
 
-      registerNav.addEventListener('click', () => {
-          register_modal.classList.add('show');
-          active = false;
-      });
-      registerHomepage.addEventListener('click', () => {
-          register_modal.classList.add('show');
-          active = false;
-      });
+  const closeRegister = document.getElementById('closeRegister');
+  const closeLogin = document.getElementById('closeLogin');
 
-      loginNav.addEventListener('click', () => {
-          login_modal.classList.add('show');
-          active = false;
-      });
-      loginHomepage.addEventListener('click', () => {
-          login_modal.classList.add('show');
-          active = false;
-      });
+  registerNav.addEventListener('click', () => {
+      register_modal.classList.add('show');
+  });
+  registerHomepage.addEventListener('click', () => {
+      register_modal.classList.add('show');
+  });
+
+  loginNav.addEventListener('click', () => {
+      login_modal.classList.add('show');
+  });
+  loginHomepage.addEventListener('click', () => {
+      login_modal.classList.add('show');
+  });
 
 
-      closeRegister.addEventListener('click', () => {
+  closeRegister.addEventListener('click', () => {
+      register_modal.classList.remove('show');
+  });
+  closeLogin.addEventListener('click', () => {
+      login_modal.classList.remove('show');
+  });
+  window.addEventListener('click', () => {
+      if (event.target == register_modal) {
           register_modal.classList.remove('show');
-          active = true;
-          showSlides();
-      });
-      closeLogin.addEventListener('click', () => {
+      }else if(event.target == login_modal){
           login_modal.classList.remove('show');
-          active = true;
-          showSlides();
-      });
-      window.addEventListener('click', () => {
-          if (event.target == register_modal) {
-              register_modal.classList.remove('show');
-          }else if(event.target == login_modal){
-              login_modal.classList.remove('show');
-          }
-      });
-    </script>
+      }
+  });
+
+</script>
 </body>

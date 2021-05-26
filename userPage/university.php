@@ -20,27 +20,26 @@
     <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
     <li></li>
     <?php
-        if(isset($_SESSION['username'])):?>
+    if(isset($_SESSION['username'])):?>
 
-        <li style="float:right"> <a href="logout.php">Logout</a></li>
-            <div class="dropdown" style="float:right">
-                <button class="dropbtn"><?php echo $_SESSION['username'] ."'s Profile";?></button>
-                <div class="dropdown-content">
-                    <a href="Profilesetting.php">Profile Setting</a>
-                    <a href="Reservation.php">My Reservation</a>
-                </div>
+        <li class="liNav" style="float:right"><a href="logout.php"> LOGOUT</a></li>
+        <div class="dropdown" style="float:right">
+            <button class="dropbtn" style="height: 55px;"><?php echo $_SESSION['username'] ."'s PROFILE";?></button>
+            <div class="dropdown-content">
+                <a href="#">Profile Setting</a>
+                <a href="#">Button 2</a>
             </div>
+        </div>
 
 
-        <?php
-        else:?>
-        <li style="float:right"><button class="slideButton" id="login" style="padding : 10px">LOG IN</button></li>
-        <li style="float:right"><button class="slideButton" id="register" style="padding : 10px">REGISTER</button></li>
-
-        <?php
-        endif;
-        ?>
-    </ul>
+    <?php
+    else:?>
+    <li style="float:right"><button class="slideButton" id="login" style="padding : 10px">LOG IN</button></li>
+    <li style="float:right"><button class="slideButton" id="register" style="padding : 10px">REGISTER</button></li>
+    <?php
+    endif;
+    ?>
+</ul>
 
 
     <div class="container-fluid">
@@ -77,6 +76,7 @@
     
     <div id="footer">Syariff Kamil</div>
 
+    <script type="text/javascript" src="../js/modal.js"></script>
     <script>
         function myFunction() {
             var input, filter, ul, li, a, i, txtValue;
