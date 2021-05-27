@@ -1,5 +1,5 @@
 /*
-  Z-modal 1 (navbar), z-modal 2 (modal), .....
+  Z-index 1 (navbar), z-index 2 (modal), .....
 */
 
 :root {
@@ -237,10 +237,9 @@ color: rgb(255, 0, 179);
 /* END OF CAROUSEL */
 
 
-
 /* SEARCH */
 #myInput {
-  background-image:  url(../image/searchIcon.png);/* IMAGE SEARCHG */
+  background-image:  url(../image/searchIcon.png);/* IMAGE SEARCHING */
   background-size: 25px;
   background-position: 10px 9px;
   background-repeat: no-repeat;
@@ -250,6 +249,7 @@ color: rgb(255, 0, 179);
   border: 2px solid #ddd;
   margin-bottom: 12px;
   width: 30%;
+
 }
 
 #myUL {
@@ -280,7 +280,7 @@ color: rgb(255, 0, 179);
 
 /* FORMS */
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=email]{
+input[type=text], input[type=password], input[type=email], textarea{
   width: 95%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -290,7 +290,7 @@ input[type=text], input[type=password], input[type=email]{
 }
 
 /* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, textarea{
   background-color: #ddd;
   outline: none;
 }
@@ -318,7 +318,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.cancelbtn, .submitbtn {
   float: left;
   width: 50%;
 }

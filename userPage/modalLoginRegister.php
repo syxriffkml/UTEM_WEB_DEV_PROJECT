@@ -11,8 +11,12 @@
 	
         $sendsql = mysqli_query($connect , $sql);
 
-        if ($sendsql){
-            header ("location: index.php",true,  301 );  exit;
+        if ($sendsql){//other way to display alert box + header
+            $message = 'TAHNIAH, ANDA BERJAYA REGISTER ACCOUNT ANDA :)'; 
+            echo "<script>
+                    alert('$message')
+                    window.location.replace('index.php');
+                </script>";
         }
     }
 ?>
@@ -30,7 +34,7 @@
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['ic_num'] = $row['ic_num'];
                 //for session
-                header ("location: index.php",true,  301 );  exit;
+                header ("location: ../index.php",true,  301 );  exit;
             }
             else{
                 $message = "invalid username or password";
@@ -45,7 +49,7 @@
 <div class="modal-container" id="register_modal">
     <div class="modal">
         <h1>REGISTER</h1>
-        <form name="registerForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form name="registerForm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <div style="overflow: auto; width: 100%; height: 40%;">
                 <label for="username"><b>Username</b></label>
                 <input type="text" id="username" placeholder="Masukkan Username" name="username" required>
@@ -54,7 +58,7 @@
                 <input type="text" id="ic_num" placeholder="No Kad Pengenalan tanpa '-' " name="ic_num" oninput="inputNumber(this.id);" maxlength="12" required/>
 
 
-                <labe for="email"><b>Alamat Email</b></labe>
+                <label for="email"><b>Alamat Email</b></label>
                 <input type="email" id="email" placeholder="Masukkan Alamat Email" name="email" required>
 
                 <b>Jantina</b><br>
@@ -71,7 +75,7 @@
             </div>
             
             <button class="buttonForm cancelbtn" id="closeRegister">Close</button>
-            <button type="submit" name="submitRegister" class="buttonForm signupbtn">Sign Up</button>
+            <button type="submit" name="submitRegister" class="buttonForm submitbtn">Sign Up</button>
         </form>
     </div>
 </div>
@@ -83,15 +87,15 @@
 <div class="modal-container" id="login_modal">
     <div class="modal">
         <h1>LOG IN</h1>
-        <form name="loginForm" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form name="loginForm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <label for="username"><b>Username</b></label>
             <input type="text" id="username" placeholder="Masukkan Nama" name="username" required>
 
-            <labe for="pass"><b>Password</b></labe>
+            <label for="pass"><b>Password</b></label>
             <input type="password" id="pass" placeholder="Enter Password" name="pass" required>
 
             <button class="buttonForm cancelbtn" id="closeLogin">Close</button>
-            <button type="submit" name="submitLogin" class="buttonForm signupbtn">LOG IN</button>
+            <button type="submit" name="submitLogin" class="buttonForm submitbtn">LOG IN</button>
         </form>
     </div>
 </div>

@@ -30,7 +30,7 @@
 <body>
 
   <ul class="ulNav">
-  <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+  <li class="liNav"><a href="../index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
   <li class="liNav"><a href="panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
   <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
   <li class="liNav"><a class="active" href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
@@ -57,38 +57,72 @@
     ?>
 </ul>
 
-  <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <div style="margin : 2px; text-align: center;">
-            <h1 style="font-size: 90px; font-weight: 900; margin-bottom: -25px;">
-              HUBUNGI KAMI
-          </h1><br><br>
-          <fieldset class="centerImage" style="width: 30%;">
-            <legend style="font-size: 30px;"><b>APA KHABAR, APA YANG KAMI BOLEH BANTU ANDA?</b></legend>
-            <img src="../image/contactUs.png">
-          </fieldset><br><br>   
-          </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 style="font-size: 90px; font-weight: 900; margin-bottom:40px; text-align: center;"">
+                    HUBUNGI KAMI
+                </h1>
+                <fieldset style="width: 50%; text-align: center;  margin: auto;">
+                    <legend style="font-size: 30px;"><b>APA KHABAR, APA YANG KAMI BOLEH BANTU ANDA?</b></legend>
+                    <img src="../image/contactUs.png" alt="upu contact image"><br><br><br>
+                    <button class="slideButton" id="contact" style="width: 20em; height: 8em;">
+                        Hantar maklumbalas anda berkenaan UPUonline
+                    </button> &nbsp;
+                    <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank">
+                        <button class="slideButton" style="width: 20em; height: 8em;">Soalan lazim <br>(FAQ)</button><br>
+                    </a>
+                </fieldset>
+            </div>
+        </div>   
+    <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+    </div><br><br><br><br>
+    <div class="modal-container" id="contact_modal">
+        <div class="modal">
+            <h1>CONTACT US</h1>
+            <form name="contactForm" method="POST">
+                <label for="name"><b>NAME</b></label>
+                <input type="text" id="nameContact" placeholder="Masukkan Nama" name="name" required>
+
+                <label for="title"><b>Tajuk</b></label>
+                <input type="text" id="title" placeholder="Masukkan Tajuk" name="title" required>
+
+                <label for="title"><b>Penyataan Masalah</b></label>
+                <textarea id="problem" name="problem" rows="4" cols="50" style="text-align: left" required placeholder="Nyatakan malasah anda"></textarea>
+
+                <button class="buttonForm cancelbtn" id="close_contact">Close</button>
+                <button type="submit" onclick="getdetails()" class="buttonForm submitbtn">Submit</button>
+            </form>
         </div>
-      </div>
-      <div class="row" style="text-align: center; ">
-        <div class="col-sm-6">
-          <button class="slideButton" style="width: 20em; height: 10em;">
-            Hantar maklumbalas anda berkenaan UPUonline
-          </button>
-        </div>
-        <div class="vl"></div>
-        <div class="col-sm-6">
-          <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank">
-            <button class="slideButton" style="width: 20em; height: 10em;">
-              Soalan lazim (FAQ)
-            </button>
-          </a>
-        </div>
-      </div>
-      <?php include "layout/modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
-      
-  </div><br><br><br><br>
+    </div>
   <div id="footer">Syariff Kamil</div>
   <script type="text/javascript" src="../js/modal.js"></script>
+  <script>
+        //MODAL CONTACT US
+        const contact = document.getElementById("contact");
+        const contact_modal = document.getElementById("contact_modal");
+        const close_contact = document.getElementById("close_contact");
+
+        contact.addEventListener('click', () => {
+            contact_modal.classList.add('show');  
+        });
+        close_contact.addEventListener('click', () => {
+            contact_modal.classList.remove('show');
+        });
+        window.addEventListener('click', () => {
+            if (event.target == contact_modal) {
+                contact_modal.classList.remove('show');
+            }
+        });
+
+        //JAVASCRIPT HANDLING CONTACT US FORM
+        function getdetails(){
+            let name = document.getElementById("nameContact").value;
+            let title = document.getElementById("title").value;
+            let problem = document.getElementById("problem").value;
+
+            alert("NAMA : " + name + "\nTAJUK : " + title + "\nPENYATAAN MASALAH : " + problem);
+        }
+
+  </script>
 </body>

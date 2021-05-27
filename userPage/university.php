@@ -14,7 +14,7 @@
 <body>
 
     <ul class="ulNav">
-    <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+    <li class="liNav"><a href="../index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
     <li class="liNav"><a href="panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
     <li class="liNav"><a class="active" href="university.php">SENARAI INSTITUSI</a></li>
     <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
@@ -71,7 +71,7 @@
             </div>
         </div>
         <br><br><br>
-        <?php include "layout/modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+        <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
     </div>
     
     <div id="footer">Syariff Kamil</div>
