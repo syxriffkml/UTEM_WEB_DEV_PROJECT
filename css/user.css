@@ -9,7 +9,7 @@
 
 body {
   color: rgb(0, 0, 0);
-  background-color: whitesmoke;
+  background-color: rgb(226, 210, 214);
   margin: 0;
   padding: 0;
   overflow-y: scroll; /* Show vertical scrollbar */

@@ -6,38 +6,43 @@
         $email = $_POST["email"];
         $gender = $_POST["gender"];
         $password = $_POST["pass"];
-
-        $sql = "INSERT INTO user (username , ic_num , gender , email , password) VALUES ('$username', '$ic_num', '$gender', '$email', '$password')"; //value from database
-	
-        $sendsql = mysqli_query($connect , $sql);
-
-        if ($sendsql){//other way to display alert box + header
-            $message = 'TAHNIAH, ANDA BERJAYA REGISTER ACCOUNT ANDA :)'; 
+        $sql = mysqli_query($connect," SELECT * FROM user WHERE ic_num = '$ic_num' ");        
+        if (mysqli_num_rows($sql)>0) {  
+            $message = "NO KAD PENGENALAN ANDA SUDAH DIPAKAI, SILA REGISTER SEMULA MENGGUNAKAN NO KAD PENGENALAN YANG BAHARU"; 
             echo "<script>
                     alert('$message')
                     window.location.replace('index.php');
                 </script>";
+        }else{
+            $sql = "INSERT INTO user (username , ic_num , gender , email , password) VALUES ('$username', '$ic_num', '$gender', '$email', '$password')"; //value from database
+            $sendsql = mysqli_query($connect , $sql);
+            if ($sendsql){//other way to display alert box + header
+                $message = 'TAHNIAH, ANDA BERJAYA REGISTER AKAUN ANDA \n\nSILA LOG IN MENGGUNAKAN NO KAD PENGENALAN DAN PASSWORD ANDA'; 
+                echo "<script>
+                        alert('$message')
+                        window.location.replace('index.php'); 
+                    </script>";
+            }
         }
     }
 ?>
 
-
 <!-- LOG IN -->
 <?php
     if (isset($_POST["submitLogin"])){
-        if(($_POST['username']) ||  ($_POST['pass'])){
-            $username = mysqli_real_escape_string($connect, $_POST['username']);
+        if(($_POST['ic_num']) ||  ($_POST['pass'])){
+            $ic_num = mysqli_real_escape_string($connect, $_POST['ic_num']);
             $password = mysqli_real_escape_string($connect, $_POST['pass']);
-            $sql = mysqli_query($connect," SELECT * FROM user WHERE username = '$username' AND password ='$password' ");        
+            $sql = mysqli_query($connect," SELECT * FROM user WHERE ic_num = '$ic_num' AND password ='$password' ");        
             if (mysqli_num_rows($sql)>0) {  
                 $row = mysqli_fetch_assoc($sql);
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['ic_num'] = $row['ic_num'];
-                //for session
-                header ("location: ../index.php",true,  301 );  exit;
+                $_SESSION['user_id'] = $row['user_id'];
+                header("location:index.php",true,301);exit;
             }
             else{
-                $message = "invalid username or password";
+                $message = "invalid ic number or password";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             }
         }
@@ -88,8 +93,8 @@
     <div class="modal">
         <h1>LOG IN</h1>
         <form name="loginForm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <label for="username"><b>Username</b></label>
-            <input type="text" id="username" placeholder="Masukkan Nama" name="username" required>
+            <label for="username"><b>No Kad Pengenalan</b></label>
+            <input type="text" id="ic_num" placeholder="Masukkan No Kad Pengenalan tanpa '-' " name="ic_num" oninput="inputNumber(this.id);" maxlength="12" required>
 
             <label for="pass"><b>Password</b></label>
             <input type="password" id="pass" placeholder="Enter Password" name="pass" required>

@@ -1,9 +1,0 @@
-ABAIKAN! ABAIKAN!  ABAIKAN! ABAIKAN!   ABAIKAN! ABAIKAN!   ABAIKAN! ABAIKAN!   ABAIKAN! ABAIKAN!  
-
-
-Disebabkan index.php duduk luar userPage, kena double check link on index page dengan page lain2
-
-header ("location: ../index.php",true,301 );exit;  <-- link php header kena ada ../url page
-
-window.location.replace('index.php');  <-- kalau pakai js takyah ../url
-

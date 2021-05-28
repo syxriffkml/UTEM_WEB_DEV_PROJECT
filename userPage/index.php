@@ -1,33 +1,41 @@
 <?php
-  include "userPage/db_connect.php";
+  include "db_connect.php";
   session_start();
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/user.css" /> 
-    <link rel="stylesheet" href="css/bootstrap-grid.css" /> 
+    <link rel="stylesheet" href="../css/user.css" /> 
+    <link rel="stylesheet" href="../css/bootstrap-grid.css" /> 
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="icon" type="image/gif/png" href="../image/upu logo.jpg">
     <title>UPU Online - UTAMA</title>
 </head>
 <body>
 
 <ul class="ulNav">
-<li class="liNav"><a class="active" href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
-<li class="liNav"><a href="userPage/panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
-<li class="liNav"><a href="userPage/university.php"> SENARAI INSTITUSI</a></li>
-<li class="liNav"><a href="userPage/contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
-<li></li>
+  <li class="liNav"><a class="active" href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+  <div class="dropdown" style="float:left">
+    <button class="dropbtn" style="height: 55px;  width:180px"> PANDUAN CALON</button>
+    <div class="dropdown-content">
+      <a href="kategoriSPM.php">KATEROGI LEPASAN<br>SPM</a>
+      <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
+      <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank" style="height:60px">FAQ</a>
+    </div>
+  </div>
+  <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
+  <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
+  <li></li>
 <?php
     if(isset($_SESSION['username'])):?>
 
-        <li class="liNav" style="float:right"><a href="userPage/logout.php"> LOGOUT</a></li>
+        <li class="liNav" style="float:right"><a href="logout.php"> LOGOUT</a></li>
         <div class="dropdown" style="float:right">
             <button class="dropbtn" style="height: 55px;"><?php echo $_SESSION['username'] ."'s PROFILE";?></button>
             <div class="dropdown-content">
-                <a href="userPage/#">Profile Setting</a>
-                <a href="userPage/#">Button 2</a>
+                <a href="#">Profile Setting</a>
+                <a href="#">Button 2</a>
             </div>
         </div>
 
@@ -48,30 +56,30 @@
             <div class="slideshow-container">             
                 <div class="mySlides fade">
                   <div class="numbertext">1 / 2</div>
-                  <img src="image/a.jpg" style="height: 100vh; width : 100% ;object-fit: fill; ">
+                  <img src="../image/graduate.jpg" style="height: 100vh; width : 100% ;object-fit: fill;filter: brightness(40%); ">
                   <div class="centeredContainer">
-                    <img src="image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
-                    <h1>WELCOME TO UPU ONLINE</h1><br>
+                    <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
+                    <h1 style="color:white; font-size:60px">SELAMAT DATANG KE <span style="color:rgb(255, 0, 179)">UPU</span>online</h1>
                   </div>
                 </div>
                 
                 <div class="mySlides fade">
                   <div class="numbertext">2 / 2</div>
-                  <img src="image/vector.jpg" style="height: 100vh; width : 100% ;object-fit: fill; ">
+                  <img src="../image/tablecofee.jpg" style="height: 100vh; width : 100% ;object-fit: fill;">
                   <div class="centeredContainer glass">
-                    <img src="image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
-                    <h1>WELCOME TO UPU ONLINE</h1><br>
+                    <img src="../image/upu logo.jpg" style="width: 12rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
+                    <h1>DAFTAR SEKARANG!</h1><br>
 
-                    <button class="slideButton" id="registerHomepage">
+                    <button class="slideButton" id="registerHomepage" style="width:200px">
                       REGISTER
-                    </button> &nbsp;                   
-                    <button class="slideButton" id="loginHomepage">
+                    </button>                   
+                    <button class="slideButton" id="loginHomepage" style="width:200px">
                       LOG IN
                     </button>
                   </div>
                 </div>
                 
-                <?php include "userPage/modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+                <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
 
                 </div>
                 <br>

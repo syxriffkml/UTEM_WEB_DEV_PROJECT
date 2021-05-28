@@ -9,29 +9,21 @@
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" /> 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+  <link rel="icon" type="image/gif/png" href="../image/upu logo.jpg">
   <title>UPU Online - HUBUNGI KAMI</title>
-  <style>
-    .vl {
-      border-left: 6px solid rgb(35, 37, 35);
-      height: 220px;
-      position: absolute;
-      left: 50%;
-      margin-left: -3px;
-      top: 40ox;
-    }
-    @media only screen and (max-width: 768px) {
-      .vl{ 
-        display: none;
-      }
-    }
-    
-    </style>
 </head>
 <body>
 
-  <ul class="ulNav">
-  <li class="liNav"><a href="../index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
-  <li class="liNav"><a href="panduan.php"><i class="far fa-user-circle fa-lg fa-secondary"></i> PANDUAN CALON</a></li>
+<ul class="ulNav">
+  <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+  <div class="dropdown" style="float:left">
+        <button class="dropbtn" style="height: 55px;  width:180px"> PANDUAN CALON</button>
+        <div class="dropdown-content">
+            <a href="kategoriSPM.php">KATEROGI LEPASAN<br>SPM</a>
+            <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
+            <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank" style="height:60px">FAQ</a>
+        </div>
+    </div>
   <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
   <li class="liNav"><a class="active" href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
   <li></li>
@@ -65,13 +57,30 @@
                 </h1>
                 <fieldset style="width: 50%; text-align: center;  margin: auto;">
                     <legend style="font-size: 30px;"><b>APA KHABAR, APA YANG KAMI BOLEH BANTU ANDA?</b></legend>
-                    <img src="../image/contactUs.png" alt="upu contact image"><br><br><br>
+                    <!--<img src="../image/contactUs.png" alt="upu contact image"><br><br><br>-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="../image/address.png" style="width:30%">
+                            <h2>ALAMAT RASMI:</h2>
+                            <p>Bahagian Kemasukan Pelajar IPTA
+                            Jabatan Pendidikan Tinggi,
+                            Kementerian Pengajian Tinggi
+                            Aras 4, No. 2 Menara 2, Jalan P5/6
+                            Presint 5 Pusat Pentadbiran Kerajaan Persekutuan
+                            62200 Wilayah Persekutuan Putrajaya</p>
+                        </div>
+                        <div class="col-sm-6" >  
+                        <img src="../image/phone.png" style="width:30%">
+                            <h2>ALAMAT RASMI:</h2>
+                            <P>TALIAN HOTLINE  : 03 8870 8200<br>
+                            FAKS            : 03 8870 6864<br>
+                            ALAMAT EMEL     : <a href="mailto:upu@mohe.gov.my">upu@mohe.gov.my</a></p>
+                        </div>
+                    </div><br>
+                    <h4 style="text-align: center;">TEKAN BUTANG DIBAWAH UNTUK MEMBERI MAKLUMBALAS</h4>
                     <button class="slideButton" id="contact" style="width: 20em; height: 8em;">
                         Hantar maklumbalas anda berkenaan UPUonline
-                    </button> &nbsp;
-                    <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank">
-                        <button class="slideButton" style="width: 20em; height: 8em;">Soalan lazim <br>(FAQ)</button><br>
-                    </a>
+                    </button>
                 </fieldset>
             </div>
         </div>   
