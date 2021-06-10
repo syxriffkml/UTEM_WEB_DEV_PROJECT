@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align: center;">
-                    <h1 style="font-size: 90px; font-weight: 900; margin-bottom: -25px;">
+                    <h1 class="bigText">
                         SENARAI INSTITUSI / AGENSI
                     </h1>
                     <br><br>

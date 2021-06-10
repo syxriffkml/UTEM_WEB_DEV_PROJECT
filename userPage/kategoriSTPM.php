@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align:center;">
-                    <h1 style="font-size: 90px; font-weight: 900; margin-bottom: -25px;">LEPASAN STPM / SETARAF</h1>
+                    <h1 class="bigText">LEPASAN STPM / SETARAF</h1>
                     <h3>PILIHAN KATEGORI PERMOHONAN DI DALAM UPUOnline</h3>
                 </div>
             </div>
