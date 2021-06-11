@@ -1,6 +1,7 @@
 <?php
   include "db_connect.php";
   session_start();
+  $id = $_SESSION['user_id'];
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +18,7 @@
 <ul class="ulNav">
     <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
     <div class="dropdown" style="float:left">
-        <button class="dropbtn" style="height: 55px; background-color: rgb(20, 20, 24); color: rgb(255, 0, 179); width:180px"> PANDUAN CALON</button>
+        <button class="dropbtn" style="height: 55px; width:180px"> PANDUAN CALON</button>
         <div class="dropdown-content">
             <a href="kategoriSPM.php">KATEGORI LEPASAN<br>SPM</a>
             <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
@@ -38,8 +39,6 @@
                 <a href="#">Button 2</a>
             </div>
         </div>
-
-
     <?php
     else:?>
     <li style="float:right"><button class="slideButton" id="login" style="padding : 10px">LOG IN</button></li>
@@ -52,40 +51,31 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div style="margin : 2px; text-align:center;">
-                    <h1 class="bigText">LEPASAN SPM</h1>
-                    <h3>PILIHAN KATEGORI PERMOHONAN DI DALAM UPUOnline</h3>
+                <div style="margin : 2px; text-align: center;">
+                    <h1 class="bigText">DISPLAY DOCUMENT</h1>
+                    <h3>Maklumat Peribadi</h3>
+                </div>
+            </div>
+        </div>     
+        <div class="row">  
+            <div class="col-sm-12" style="padding : 30px 50px;">
+                <div class="glass" style="padding : 30px 50px;">
+
+                    <?php
+                        $query = mysqli_query($connect, "SELECT * FROM document WHERE user_id='$id'") or die(mysqli_query($connect));
+                        $uploads = mysqli_fetch_array($query);
+                    ?>
+
+                    <img src="../image/user documents/<?php echo $uploads['transcript'] ?>" alt="transcript pic" width="200px" height="200px">
+                    <img src="../image/user documents/<?php echo $uploads['result_spm'] ?>" alt="result spm pic" width="200px" height="200px">
+                    <img src="../image/user documents/<?php echo $uploads['result_muet'] ?>" alt="result muet pic" width="200px" height="200px">
+                    <img src="../image/user documents/<?php echo $uploads['ic_photo'] ?>" alt="ic photo pic" width="200px" height="200px">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="glass" style="height: 400px;">
-                    <img src="../image/panduan page/1.png" class="centerImage">
-                    <div style="margin : 15px; text-align: center;">
-                        <h2>KATEGORI A</h2>
-                        <p>
-                            Pemohon yang menggunakan kelayakan SPM tahun semasa sahaja.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="glass" style="height: 400px;">
-                    <img src="../image/panduan page/2.png" class="centerImage">
-                    <div style="margin : 15px; text-align: center;">
-                        <h2>KATEGORI B</h2>
-                        <p>
-                            Pemohon yang menggunakan keputusan SPM bukan tahun semasa;
-                        </p>
-                        <b>-SPM 2018- -SPM 2019-</b>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+    <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
     </div><br><br><br><br>
+
     <div id="footer">Syariff Kamil</div>
     <script type="text/javascript" src="../js/modal.js"></script>
 

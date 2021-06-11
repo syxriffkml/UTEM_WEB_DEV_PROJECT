@@ -1,6 +1,11 @@
 <?php
   include "db_connect.php";
   session_start();
+  $id = $_SESSION['user_id'];
+
+  if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
+    header ("location: index.php");
+  }else{
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +24,7 @@
     <div class="dropdown" style="float:left">
         <button class="dropbtn" style="height: 55px; width:180px"> PANDUAN CALON</button>
         <div class="dropdown-content">
-            <a href="kategoriSPM.php">KATEROGI LEPASAN<br>SPM</a>
+            <a href="kategoriSPM.php">KATEGORI LEPASAN<br>SPM</a>
             <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
             <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank" style="height:60px">FAQ</a>
         </div>
@@ -51,35 +56,34 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align: center;">
-                    <h1 class="bigText">Insert somethng here</h1><br><br>
+                    <h1 class="bigText">Account Setup</h1>
+                    <h3>Maklumat Peribadi</h3>
                 </div>
             </div>
         </div>     
         <div class="row">  
             <div class="col-sm-12" style="padding : 30px 50px;">
                 <div class="glass" style="padding : 30px 50px;">
-                    <form name="setup1" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                    <form name="setup1" method="POST" action="setup1.php">
                         <table>
                             <tr>
                                 <td style="vertical-align: text-top; width:30%">
-                                    <label for="username"><b>Nama Penuh </b></label>
-                                    <input type="text" id="username" placeholder="Masukkan Nama Penuh" name="username" required><br>
+                                    <label for="fullname"><b>Nama Penuh </b></label>
+                                    <input type="text" id="fullname" placeholder="Masukkan Nama Penuh" name="fullname" required><br>
 
-                                    <label for="title"><b>Alamat Rumah</b></label>
-                                    <textarea id="problem" name="problem" rows="4" cols="30" style="text-align: left; background-color: #f1f1f1;" required placeholder="Masukkan Alamat Rumah"></textarea><br>
+                                    <label for="address"><b>Alamat Rumah</b></label>
+                                    <textarea id="address" name="address" rows="4" cols="30" style="text-align: left; background-color: #f1f1f1;" required placeholder="Masukkan Alamat Rumah"></textarea><br>
 
                                     <label for="phone1"><b>No Telefon</b></label>
-                                    <input type="text" id="phone1" placeholder="Masukkan No Telefon" name="phone1" oninput="inputNumber(this.id);" required/><br>
+                                    <input type="text" id="phone1" placeholder="Masukkan No Telefon" name="phone1" oninput="inputNumber(this.id);" max="999999999999999999" required/><br>
 
                                     <label for="phone2"><b>No Telefon Bapa/Ibu/Penjaga</b></label>
-                                    <input type="text" id="phone2" placeholder="Masukkan No Telefon Bapa/Ibu/Penjaga " name="phone2" oninput="inputNumber(this.id);" required/>
+                                    <input type="text" id="phone2" placeholder="Masukkan No Telefon Bapa/Ibu/Penjaga " name="phone2" oninput="inputNumber(this.id);" max="9999999999999999999" required/>
                                 </td>
                                 <td style="vertical-align: text-top; width:30%">
-                                    <label for="username"><b>Nama Penuh </b></label>
-                                    <input type="text" id="username" placeholder="Masukkan Nama Penuh" name="username" required><br>
-
                                     <label for="birthplace"><b>Tempat Lahir </b></label>
                                     <select id="birthplace" name="birthplace">
+                                        <option value="" disabled selected>Pilih Tempat Lahir </option>
                                         <option value="Johor">Johor</option>
                                         <option value="Kedah">Kedah</option>
                                         <option value="Kelantan">Kelantan</option>
@@ -97,6 +101,7 @@
 
                                     <label for="marital_status"><b>Taraf Perkahwinan</b></label>
                                     <select id="marital_status" name="marital_status">
+                                        <option value="" disabled selected>Pilih Taraf Perkahwinan</option>
                                         <option value="Bujang">Bujang</option>
                                         <option value="Berkahwin">Berkahwin</option>
                                         <option value="Duda/Janda">Duda/Janda</option>
@@ -104,7 +109,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <button class="buttonForm cancelbtn" id="closeRegister">Close</button>
+                        <button type="reset" class="buttonForm cancelbtn">Reset</button>
                         <button type="submit" name="submitSetup1" class="buttonForm submitbtn">Seterusnya</button><br><br><br>
                     </form>
                 </div>
@@ -117,3 +122,7 @@
     <script type="text/javascript" src="../js/modal.js"></script>
 
 </body>
+
+<?php
+} // TUTUP CURLYBRACES if(is_null($id))
+?>

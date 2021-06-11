@@ -19,7 +19,7 @@
   <div class="dropdown" style="float:left">
         <button class="dropbtn" style="height: 55px;  width:180px"> PANDUAN CALON</button>
         <div class="dropdown-content">
-            <a href="kategoriSPM.php">KATEROGI LEPASAN<br>SPM</a>
+            <a href="kategoriSPM.php">KATEGORI LEPASAN<br>SPM</a>
             <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
             <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank" style="height:60px">FAQ</a>
         </div>
@@ -130,7 +130,10 @@
             let title = document.getElementById("title").value;
             let problem = document.getElementById("problem").value;
 
+
             alert("NAMA : " + name + "\nTAJUK : " + title + "\nPENYATAAN MASALAH : " + problem);
+
+            
         }
 
   </script>

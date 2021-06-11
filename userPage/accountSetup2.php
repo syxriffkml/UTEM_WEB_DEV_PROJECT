@@ -1,6 +1,11 @@
 <?php
   include "db_connect.php";
   session_start();
+  $id = $_SESSION['user_id'];
+
+  if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
+    header ("location: index.php");
+  }else{
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +22,7 @@
 <ul class="ulNav">
     <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
     <div class="dropdown" style="float:left">
-        <button class="dropbtn" style="height: 55px; background-color: rgb(20, 20, 24); color: rgb(255, 0, 179); width:180px"> PANDUAN CALON</button>
+        <button class="dropbtn" style="height: 55px; width:180px"> PANDUAN CALON</button>
         <div class="dropdown-content">
             <a href="kategoriSPM.php">KATEGORI LEPASAN<br>SPM</a>
             <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
@@ -38,8 +43,6 @@
                 <a href="#">Button 2</a>
             </div>
         </div>
-
-
     <?php
     else:?>
     <li style="float:right"><button class="slideButton" id="login" style="padding : 10px">LOG IN</button></li>
@@ -52,41 +55,47 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div style="margin : 2px; text-align:center;">
-                    <h1 class="bigText">LEPASAN SPM</h1>
-                    <h3>PILIHAN KATEGORI PERMOHONAN DI DALAM UPUOnline</h3>
+                <div style="margin : 2px; text-align: center;">
+                    <h1 class="bigText">Account Setup 2</h1>
+                    <h3>Maklumat Akademik</h3>
+                </div>
+            </div>
+        </div>     
+        <div class="row">  
+            <div class="col-sm-12" style="padding : 30px 50px;">
+                <div class="glass" style="padding : 30px 50px;">
+                    <form name="setup1" method="POST" action="setup2.php" enctype="multipart/form-data">
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="fullname"><b>Transcript : </b></label> <br>
+                                    <label for="fullname"><b>Keputusan SPM : </b></label> <br>
+                                    <label for="fullname"><b>Keputusan MUET : </b></label><br>
+                                    <label for="fullname"><b>Gambar IC : </b></label><br><br><br>
+                                </td>
+                                <td>
+                                    <input type="file" name ="transcript"><br>
+                                    <input type="file" name ="result_spm"><br>
+                                    <input type="file" name ="result_muet"><br>
+                                    <input type="file" name ="ic_photo"><br><br><br>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <button type="reset" class="buttonForm cancelbtn">Reset</button>
+                        <button type="submit" name="submitSetup2" class="buttonForm submitbtn">Simpan</button><br><br><br>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="glass" style="height: 400px;">
-                    <img src="../image/panduan page/1.png" class="centerImage">
-                    <div style="margin : 15px; text-align: center;">
-                        <h2>KATEGORI A</h2>
-                        <p>
-                            Pemohon yang menggunakan kelayakan SPM tahun semasa sahaja.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="glass" style="height: 400px;">
-                    <img src="../image/panduan page/2.png" class="centerImage">
-                    <div style="margin : 15px; text-align: center;">
-                        <h2>KATEGORI B</h2>
-                        <p>
-                            Pemohon yang menggunakan keputusan SPM bukan tahun semasa;
-                        </p>
-                        <b>-SPM 2018- -SPM 2019-</b>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
+    <?php include "modalLoginRegister.php" ?> <!--FOR MODAL DISPLAY-->
     </div><br><br><br><br>
+
     <div id="footer">Syariff Kamil</div>
     <script type="text/javascript" src="../js/modal.js"></script>
 
 </body>
+
+<?php
+}  // TUTUP CURLYBRACES if(is_null($id))
+?>
