@@ -55,7 +55,7 @@
     <div class="modal">
         <h1>REGISTER</h1>
         <form name="registerForm" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <div style="overflow: auto; width: 100%; height: 40%;">
+            <div style="overflow:auto; width: 100%; height: 40%;">
                 <label for="username"><b>Username</b></label>
                 <input type="text" id="username" placeholder="Masukkan Username" name="username" required>
 

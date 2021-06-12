@@ -3,19 +3,18 @@
   session_start();
   $id = $_SESSION['user_id'];
 
-  $query = mysqli_query($connect, "SELECT * FROM userdetail WHERE user_id='$id'") or die(mysqli_query($connect));
-  $sql = "SELECT * FROM document WHERE user_id='$id'";
+
+  $sql = "SELECT * FROM application WHERE user_id='$id'";
   $result = mysqli_query($connect,$sql);
+  $row = mysqli_fetch_assoc($result);
 
   if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
     header ("location: index.php");
-  }else if(mysqli_num_rows($result) >0){ //IF USER YANG DAH LOGIN DAH  BUAT SETUP2, DIA PERGI KAT displayDoc.php
-    header ("location: displayDoc.php");
-  }else if((mysqli_num_rows($query) ==0)){ //IF USER YANG BELUM SETUP ACCOUNT, DIA AKAN PERGI SETUP DULU
-    $message = "SILA ISI MAKLUMAT PERIBADI DAHULU DAHULU SEBELUM MENGISI MAKLUMAT AKADEMIK"; 
+  }else if( (mysqli_num_rows($result) ==0) ){ //IF USER BELUM MOHON, DIA AKAN PERGI SETUP MOHON DULU BARRU LEH VIEW
+    $message = "SILA ISI PERMOHONAN TERLEBIH DAHULU"; 
     echo "<script>
             alert('$message')
-            window.location.replace('accountSetup.php');
+            window.location.replace('application.php');
         </script>";
   }else{  //ELSE
 ?>
@@ -27,7 +26,14 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="icon" type="image/gif/png" href="../image/upu logo.jpg">
-    <title>UPU Online - MAKLUMAT AKADEMIK</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <title>UPU Online - PILIHAN PROGRAM</title>
+    <style>
+        ::placeholder {
+            color: black;
+            font-weight : 700;
+        }
+    </style>
 </head>
 <body>
 
@@ -43,6 +49,7 @@
     </div>
     <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
     <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
+    <li class="liNav"><a class="active" href="application.php"><i class="fas fa-phone fa-lg fa-secondary"></i> PERMOHONAN</a></li>
     <li></li>
     <?php
     if(isset($_SESSION['username'])):?>
@@ -68,36 +75,34 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align: center;">
-                    <h1 class="bigText">Account Setup 2</h1>
-                    <h3>Maklumat Akademik</h3>
+                    <h1 class="bigText">PILIHAN PROGRAM</h1>
+                    <h3>Maklumat Pilihan</h3>
                 </div>
             </div>
         </div>     
         <div class="row">  
-            <div class="col-sm-12" style="padding : 30px 400px;">
-                <div class="glass" style="padding : 30px 50px;">
-                    <form name="setup2" method="POST" action="setup2.php" enctype="multipart/form-data">
-                        <table>
-                            <tr>
-                                <td>
-                                    <label for="fullname"><b>Transcript : </b></label> <br><br><br>
-                                    <label for="fullname"><b>Keputusan SPM : </b></label> <br><br><br>
-                                    <label for="fullname"><b>Keputusan MUET : </b></label><br><br><br>
-                                    <label for="fullname"><b>Gambar IC : </b></label><br><br><br>
-                                </td>
-                                <td>
-                                    <input type="file" name ="transcript"><br><br><br>
-                                    <input type="file" name ="result_spm"><br><br><br>
-                                    <input type="file" name ="result_muet"><br><br><br>
-                                    <input type="file" name ="ic_photo"><br><br><br>
-                                </td>
-                            </tr>
-                        </table>
-                        <div style="padding : 0px 100px;">
-                            <button type="reset" class="buttonForm cancelbtn">Reset</button>
-                            <button type="submit" name="submitSetup2" class="buttonForm submitbtn">Simpan</button><br><br>
-                        </div>
-                    </form>
+            <div class="col-sm-12" style="padding : 30px 100px;">
+                <div class="glass" style="padding : 30px 50px; text-align:center;">
+                    <!--PILIHAN 1-->
+                    <label for="pilihan1"><b>Pilihan 1 </b></label>&nbsp;
+                    <input type="text" placeholder="<?php echo $row['uni1'] ?>" disabled style="width:34%; background:#ffffff;">&nbsp; &nbsp;
+                    <input type="text" placeholder="<?php echo $row['course1'] ?>" disabled style="width:45%; background:#ffffff"><br>
+                    <!--PILIHAN 2-->
+                    <label for="pilihan1"><b>Pilihan 2 </b></label>&nbsp;
+                    <input type="text" placeholder="<?php echo $row['uni2'] ?>" disabled style="width:34%; background:#ffffff">&nbsp; &nbsp;
+                    <input type="text" placeholder="<?php echo $row['course2'] ?>" disabled style="width:45%; background:#ffffff"><br>
+                    <!--PILIHAN 3-->
+                    <label for="pilihan1"><b>Pilihan 3 </b></label>&nbsp;
+                    <input type="text" placeholder="<?php echo $row['uni3'] ?>" disabled style="width:34%; background:#ffffff">&nbsp; &nbsp;
+                    <input type="text" placeholder="<?php echo $row['course3'] ?>" disabled style="width:45%;background:#ffffff"><br>
+                    <!--PILIHAN 4-->
+                    <label for="pilihan1"><b>Pilihan 4 </b></label>&nbsp;
+                    <input type="text" placeholder="<?php echo $row['uni4'] ?>" disabled style="width:34%; background:#ffffff">&nbsp; &nbsp;
+                    <input type="text" placeholder="<?php echo $row['course4'] ?>" disabled style="width:45%; background:#ffffff"><br>
+                    <!--PILIHAN 5-->
+                    <label for="pilihan1"><b>Pilihan 5 </b></label>&nbsp;
+                    <input type="text" placeholder="<?php echo $row['uni5'] ?>" disabled style="width:34%; background:#ffffff">&nbsp; &nbsp;
+                    <input type="text" placeholder="<?php echo $row['course5'] ?>" disabled style="width:45%; background:#ffffff"><br>
                 </div>
             </div>
         </div>
@@ -110,5 +115,5 @@
 </body>
 
 <?php
-}  // TUTUP CURLYBRACES if(is_null($id))
+} // TUTUP CURLYBRACES if(is_null($id))
 ?>

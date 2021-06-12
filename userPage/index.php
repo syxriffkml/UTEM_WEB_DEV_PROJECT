@@ -29,17 +29,18 @@
   <li></li>
 <?php
     if(isset($_SESSION['username'])):?>
-
+        <li class="liNav"><a href="application.php"><i class="fas fa-phone fa-lg fa-secondary"></i> PERMOHONAN</a></li>
+        <!-- Navbar button below will display on right -->
         <li class="liNav" style="float:right"><a href="logout.php"> LOGOUT</a></li>
         <div class="dropdown" style="float:right">
             <button class="dropbtn" style="height: 55px;"><?php echo $_SESSION['username'] ."'s PROFILE";?></button>
             <div class="dropdown-content">
-                <a href="#">Profile Setting</a>
-                <a href="#">Button 2</a>
+                <a href="profile.php">Profile Setting</a>
+                <a href="passwordUpdate.php">Kemaskini Password</a>
+                <a href="displayDoc.php">Maklumat Peribadi<br>dan Akademik</a>
+                <a href="viewApplication.php">Semak Permohonan</a>
             </div>
         </div>
-
-
     <?php
     else:?>
     <li style="float:right"><button class="slideButton" id="loginNav" style="padding : 10px">LOG IN</button></li> <!-- Homepage je pakai id loginNav and registerNav-->
@@ -53,6 +54,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
+          <?php 
+            if(isset($_SESSION['username'])){ ?>
+              <img src="../image/graduate.jpg" style="height: 100vh; width : 100% ;object-fit: fill;filter: brightness(30%); ">
+              <div class="centeredContainer">
+                <img src="../image/upu logo.jpg" style="width: 10rem; border-radius: 50%; border: 6px solid rgb(0, 0, 0); " alt="UPU LOGO" class="centerImage">
+                <h1 style="color:white; font-size:40px">SELAMAT DATANG <span style="color:rgb(255, 0, 179)"><?php echo $_SESSION['username'] ?></span></h1>
+                <h3 class="link"><a href="application.php">CLICK DI SINI UNTUK MEMOHON</a> </h3>
+              </div>
+          <?php 
+            }else{
+          ?>
             <div class="slideshow-container">             
                 <div class="mySlides fade">
                   <div class="numbertext">1 / 2</div>
@@ -85,6 +97,7 @@
                 <br>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>
 <div id="footer">Syariff Kamil</div>

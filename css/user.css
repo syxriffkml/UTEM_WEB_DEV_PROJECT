@@ -340,6 +340,35 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, tex
 /* END OF FORMS */
 
 
+/* STYLE TABLE */
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 5px solid rgb(255, 0, 179);
+}
+
+/* END OF STYLE TABLE */
+
 
 /* FOOTER */
 #footer { 
@@ -354,8 +383,24 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, tex
 } 
 /* END OF FOOTER */
 
-
-
+/* LINK AT INDEX AFTER LOGIN */
+.link a:link {
+  color: white;
+  text-decoration: none;
+}
+.link a:hover {
+  color: rgb(255, 0, 179);
+  text-decoration: none;
+}
+.link a:visited {
+  color: white;
+  text-decoration: none;
+}
+.link a:active {
+  color: rgb(255, 0, 179);
+  text-decoration: none;
+}
+/* END OF LINK AT INDEX AFTER LOGIN */
 
 /* FONTS */
   /*

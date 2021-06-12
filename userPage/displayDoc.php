@@ -2,6 +2,21 @@
   include "db_connect.php";
   session_start();
   $id = $_SESSION['user_id'];
+
+    $query1 = mysqli_query($connect, "SELECT * FROM document WHERE user_id='$id'") or die(mysqli_query($connect)); 
+    $uploads = mysqli_fetch_array($query1);
+    $query2 = mysqli_query($connect, "SELECT * FROM userdetail WHERE user_id='$id'") or die(mysqli_query($connect));
+    $row = mysqli_fetch_array($query2); 
+
+  if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
+    header ("location: index.php");
+  }else if( (mysqli_num_rows($query1) ==0) || (mysqli_num_rows($query2) ==0)){ //IF USER YANG BELUM SETUP ACCOUNT, DIA AKAN PERGI SETUP DULU
+    $message = "SILA ISI MAKLUMAT PERIBADI & AKADEMIK DAHULU SEBELUM MELIHAT INFO ANDA"; 
+    echo "<script>
+            alert('$message')
+            window.location.replace('accountSetup.php');
+        </script>";
+  }else{  //ELSE
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +26,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="icon" type="image/gif/png" href="../image/upu logo.jpg">
-    <title>UPU Online - KATEGORI SPM</title>
+    <title>UPU Online - PAPARAN MAKLUMAT</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,24 +73,77 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align: center;">
-                    <h1 class="bigText">DISPLAY DOCUMENT</h1>
-                    <h3>Maklumat Peribadi</h3>
+                    <h1 class="bigText">MAKLUMAT PENTING</h1>
                 </div>
             </div>
         </div>     
         <div class="row">  
             <div class="col-sm-12" style="padding : 30px 50px;">
                 <div class="glass" style="padding : 30px 50px;">
-
-                    <?php
-                        $query = mysqli_query($connect, "SELECT * FROM document WHERE user_id='$id'") or die(mysqli_query($connect));
-                        $uploads = mysqli_fetch_array($query);
-                    ?>
-
-                    <img src="../image/user documents/<?php echo $uploads['transcript'] ?>" alt="transcript pic" width="200px" height="200px">
-                    <img src="../image/user documents/<?php echo $uploads['result_spm'] ?>" alt="result spm pic" width="200px" height="200px">
-                    <img src="../image/user documents/<?php echo $uploads['result_muet'] ?>" alt="result muet pic" width="200px" height="200px">
-                    <img src="../image/user documents/<?php echo $uploads['ic_photo'] ?>" alt="ic photo pic" width="200px" height="200px">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h1  style="text-align: center;">Maklumat Peribadi</h1>
+                            <table class="styled-table" style="width: 50%; margin-left: auto; margin-right: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:40%"> Nama Penuh : </td>
+                                        <td><?php echo $row['fullname'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alamat Rumah :</td>
+                                        <td><?php echo $row['address'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Telefon :</td>
+                                        <td><?php echo $row['phone1'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>No Telefon Bapa/Ibu/Penjaga :</td>
+                                        <td><?php echo $row['phone2'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tempat Lahir :</td>
+                                        <td><?php echo $row['birthplace'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Taraf Perkahwinan : </td>
+                                        <td><?php echo $row['marital_status'] ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-6">
+                            <h1 style="text-align: center;">Maklumat Akademik</h1>
+                            <table class="styled-table" style="width: 30%; margin-left: auto; margin-right: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:35%">Transcript :</td>
+                                        <td>
+                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW TRANSCRIPT</button></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Result SPM :</td>
+                                        <td>
+                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW RESULT SPM</button></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Result MUET :</td>
+                                        <td>
+                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW RESULT MUET</button></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>IC Photo : </td>
+                                        <td>
+                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW IC PHOTO</button></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,3 +154,7 @@
     <script type="text/javascript" src="../js/modal.js"></script>
 
 </body>
+
+<?php
+} // TUTUP CURLYBRACES if(is_null($id))
+?>

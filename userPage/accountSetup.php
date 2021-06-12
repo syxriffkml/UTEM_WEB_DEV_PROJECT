@@ -3,9 +3,14 @@
   session_start();
   $id = $_SESSION['user_id'];
 
+  $sql = "SELECT * FROM userdetail WHERE user_id='$id'";
+  $result = mysqli_query($connect,$sql);
+
   if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
     header ("location: index.php");
-  }else{
+  }else if(mysqli_num_rows($result) >0){ //IF USER YANG DAH LOGIN DAH  BUAT SETUP, DIA PERGI KAT accountSetup2.php
+    header ("location: accountSetup2.php");
+  }else{  //KALAU REGISTERED USER DAH LOGIN BUT BELUM SETUP BOLEH VIEW PAGE NI
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" /> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="icon" type="image/gif/png" href="../image/upu logo.jpg">
-    <title>UPU Online - KATEGORI SPM</title>
+    <title>UPU Online - MAKLUMAT PERIBADI</title>
 </head>
 <body>
 

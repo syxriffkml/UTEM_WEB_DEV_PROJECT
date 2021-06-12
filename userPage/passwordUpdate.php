@@ -3,21 +3,7 @@
   session_start();
   $id = $_SESSION['user_id'];
 
-  $query = mysqli_query($connect, "SELECT * FROM userdetail WHERE user_id='$id'") or die(mysqli_query($connect));
-  $sql = "SELECT * FROM document WHERE user_id='$id'";
-  $result = mysqli_query($connect,$sql);
 
-  if(is_null($id)){ //USER YANG TAK LOGIN TAK BOLEH VIEW PAGE NI, SO DIA AKAN REDIRECT TERUS KE INDEX.PHP
-    header ("location: index.php");
-  }else if(mysqli_num_rows($result) >0){ //IF USER YANG DAH LOGIN DAH  BUAT SETUP2, DIA PERGI KAT displayDoc.php
-    header ("location: displayDoc.php");
-  }else if((mysqli_num_rows($query) ==0)){ //IF USER YANG BELUM SETUP ACCOUNT, DIA AKAN PERGI SETUP DULU
-    $message = "SILA ISI MAKLUMAT PERIBADI DAHULU DAHULU SEBELUM MENGISI MAKLUMAT AKADEMIK"; 
-    echo "<script>
-            alert('$message')
-            window.location.replace('accountSetup.php');
-        </script>";
-  }else{  //ELSE
 ?>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,34 +54,43 @@
         <div class="row">
             <div class="col-sm-12">
                 <div style="margin : 2px; text-align: center;">
-                    <h1 class="bigText">Account Setup 2</h1>
-                    <h3>Maklumat Akademik</h3>
+                    <h1 class="bigText">UPDATE PASSWORD</h1>
                 </div>
             </div>
         </div>     
         <div class="row">  
             <div class="col-sm-12" style="padding : 30px 400px;">
                 <div class="glass" style="padding : 30px 50px;">
-                    <form name="setup2" method="POST" action="setup2.php" enctype="multipart/form-data">
+                    <form name="passwordUpdate" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
                         <table>
                             <tr>
                                 <td>
-                                    <label for="fullname"><b>Transcript : </b></label> <br><br><br>
-                                    <label for="fullname"><b>Keputusan SPM : </b></label> <br><br><br>
-                                    <label for="fullname"><b>Keputusan MUET : </b></label><br><br><br>
-                                    <label for="fullname"><b>Gambar IC : </b></label><br><br><br>
+                                    <label for="old_pass"><b>Password Lama :</b></label>
+                                </td>
+                                <td style="width: 60%;">
+                                    <input type="text" id="old_pass" placeholder="Masukkan Password Lama Anda" name="old_pass" required ><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="pass"><b>Password Baharu :</b></label> &nbsp; &nbsp;
                                 </td>
                                 <td>
-                                    <input type="file" name ="transcript"><br><br><br>
-                                    <input type="file" name ="result_spm"><br><br><br>
-                                    <input type="file" name ="result_muet"><br><br><br>
-                                    <input type="file" name ="ic_photo"><br><br><br>
+                                    <input type="password" id="pass" placeholder="Masukkan Password Baharu Anda" name="pass" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="pass-repeat"><b>Sahkan Password Baharu :</b></label> &nbsp; &nbsp;
+                                </td>
+                                <td>
+                                <input type="password" id="pass-repeat" placeholder="Ulang Password Baharu Anda" name="pass-repeat" required>
                                 </td>
                             </tr>
                         </table>
-                        <div style="padding : 0px 100px;">
-                            <button type="reset" class="buttonForm cancelbtn">Reset</button>
-                            <button type="submit" name="submitSetup2" class="buttonForm submitbtn">Simpan</button><br><br>
+                        <br>
+                        <div style="width: 30%; margin-left: auto; margin-right: auto;;">
+                            <button type="submit" name="updatePass" class="buttonForm">KEMASKINI</button><br>
                         </div>
                     </form>
                 </div>
@@ -106,9 +101,51 @@
 
     <div id="footer">Syariff Kamil</div>
     <script type="text/javascript" src="../js/modal.js"></script>
-
 </body>
 
+<script> 
+//PASSWORD MATCH
+let password = document.getElementById("pass")
+let confirm_password = document.getElementById("pass-repeat");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+
 <?php
-}  // TUTUP CURLYBRACES if(is_null($id))
+    if (isset($_POST['updatePass'])) {
+        $old_pass = $_POST["old_pass"]; //value from php
+        $new_pass = $_POST["pass"];
+        
+        $sql = "SELECT * FROM user WHERE user_id='$id'";
+        $result = mysqli_query($connect,$sql);
+        $row = mysqli_fetch_assoc($result);
+        if($old_pass == $row['password']){
+            //proceed
+            $sql2 = "UPDATE user SET password = '$new_pass' WHERE user_id = '$id'";
+            $sendsql = mysqli_query($connect , $sql2);
+            if($sendsql){
+                $message = 'PASSWORD ANDA TELAH DIKEMASKINI'; 
+                echo "<script>
+                        alert('$message')
+                        window.location.replace('index.php'); 
+                    </script>";
+            }
+        }else{
+            $message = 'ERROR : PASSWORD LAMA ANDA TIDAK SAMA SEPERTI DI DALAM DATABASE'; 
+            echo "<script>
+                    alert('$message')
+                    window.location.replace('passwordUpdate.php'); 
+                </script>";
+        }
+    }
 ?>
+
