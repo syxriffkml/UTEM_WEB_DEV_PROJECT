@@ -18,7 +18,8 @@ For future references :
 2) Modal popup by Florin Pop -> https://www.youtube.com/watch?v=XH5OW46yO8I
 3) Retype password confirmation -> https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727518
 4) Google fonts -> https://fonts.google.com/
-5) Icons and logo -> https://fontawesome.com/
+5) How to use downloaded fonts by Kevin Powell -> https://www.youtube.com/watch?v=KzqQXDbDvus
+6) Icons and logo -> https://fontawesome.com/
 
 
 
