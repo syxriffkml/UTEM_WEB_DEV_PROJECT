@@ -116,7 +116,7 @@ function inputNumber(id) {
 }
 
 //PASSWORD MATCH
-let password = document.getElementById("pass")
+let password = document.getElementById("pass");
 let confirm_password = document.getElementById("pass-repeat");
 
 function validatePassword(){
