@@ -32,27 +32,30 @@
 <body>
 
 <ul class="ulNav">
-    <li class="liNav"><a href="index.php"><i class="fas fa-tachometer-alt fa-lg fa-secondary"></i> UTAMA</a></li>
+    <li class="liNav"><a href="index.php"><i class="fas fa-home"></i> UTAMA</a></li>
     <div class="dropdown" style="float:left">
-        <button class="dropbtn" style="height: 55px; width:180px"> PANDUAN CALON</button>
+        <button class="dropbtn" style="height: 58px; width:180px"> PANDUAN CALON</button>
         <div class="dropdown-content">
             <a href="kategoriSPM.php">KATEGORI LEPASAN<br>SPM</a>
             <a href="kategoriSTPM.php">KATEGORI LEPASAN<br>STPM/SETARAF</a>
             <a href="https://drive.google.com/file/d/1PPyxU7cp8w3PIyVJHqwpVfB9wrKKeC5L/view" target="_blank" style="height:60px">FAQ</a>
         </div>
     </div>
-    <li class="liNav"><a href="university.php"> SENARAI INSTITUSI</a></li>
-    <li class="liNav"><a href="contact.php"><i class="fas fa-phone fa-lg fa-secondary"></i> HUBUNGI KAMI</a></li>
+    <li class="liNav"><a href="university.php"><i class="fas fa-university"></i> SENARAI INSTITUSI</a></li>
+    <li class="liNav"><a href="contact.php"><i class="fas fa-phone"></i> HUBUNGI KAMI</a></li>
     <li></li>
     <?php
     if(isset($_SESSION['username'])):?>
-
+        <li class="liNav"><a href="application.php"><i class="fas fa-clipboard-list"></i> PERMOHONAN</a></li>
+        <!-- Navbar button below will display on right -->
         <li class="liNav" style="float:right"><a href="logout.php"> LOGOUT</a></li>
         <div class="dropdown" style="float:right">
             <button class="dropbtn" style="height: 55px;"><?php echo $_SESSION['username'] ."'s PROFILE";?></button>
             <div class="dropdown-content">
-                <a href="#">Profile Setting</a>
-                <a href="#">Button 2</a>
+                <a href="profile.php">Profile Setting</a>
+                <a href="passwordUpdate.php">Kemaskini Password</a>
+                <a href="displayDoc.php">Maklumat Peribadi<br>dan Akademik</a>
+                <a href="viewApplication.php">Semak Permohonan</a>
             </div>
         </div>
     <?php
@@ -83,16 +86,17 @@
                                     <label for="fullname"><b>Transcript : </b></label> <br><br><br>
                                     <label for="fullname"><b>Keputusan SPM : </b></label> <br><br><br>
                                     <label for="fullname"><b>Keputusan MUET : </b></label><br><br><br>
-                                    <label for="fullname"><b>Gambar IC : </b></label><br><br><br>
+                                    <label for="fullname"><b>Gambar IC : </b></label><br>
                                 </td>
                                 <td>
-                                    <input type="file" name ="transcript"><br><br><br>
-                                    <input type="file" name ="result_spm"><br><br><br>
-                                    <input type="file" name ="result_muet"><br><br><br>
-                                    <input type="file" name ="ic_photo"><br><br><br>
+                                    <input type="file" name ="transcript" required><br><br><br>
+                                    <input type="file" name ="result_spm" required><br><br><br>
+                                    <input type="file" name ="result_muet" required><br><br><br>
+                                    <input type="file" name ="ic_photo" required><br>
                                 </td>
                             </tr>
                         </table>
+                        <h4>*size file tidak melebihi dari 9mb</h4>
                         <div style="padding : 0px 100px;">
                             <button type="reset" class="buttonForm cancelbtn">Reset</button>
                             <button type="submit" name="submitSetup2" class="buttonForm submitbtn">Simpan</button><br><br>
