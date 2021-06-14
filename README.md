@@ -1,5 +1,5 @@
 # University-And-Course-Admission-System
-UTeM web project for -> BITM2113 WEB APPLICATION DEVELOPMENT
+UTeM web project for -> BITM2113 WEB APPLICATION DEVELOPMENT (individual project)
 
 Title : UPU Online (University And Course Admission System)
 
