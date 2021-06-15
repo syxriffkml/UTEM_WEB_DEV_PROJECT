@@ -128,19 +128,19 @@
                                     <tr>
                                         <td>Result SPM :</td>
                                         <td>
-                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW RESULT SPM</button></a>
+                                            <a href="../image/user documents/<?php echo $uploads['result_spm'] ?>" target="_blank"><button>VIEW RESULT SPM</button></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Result MUET :</td>
                                         <td>
-                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW RESULT MUET</button></a>
+                                            <a href="../image/user documents/<?php echo $uploads['result_muet'] ?>" target="_blank"><button>VIEW RESULT MUET</button></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>IC Photo : </td>
                                         <td>
-                                            <a href="../image/user documents/<?php echo $uploads['transcript'] ?>" target="_blank"><button>VIEW IC PHOTO</button></a>
+                                            <a href="../image/user documents/<?php echo $uploads['ic_photo'] ?>" target="_blank"><button>VIEW IC PHOTO</button></a>
                                         </td>
                                     </tr>
                                 </tbody>

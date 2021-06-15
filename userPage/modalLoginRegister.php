@@ -1,5 +1,5 @@
 <!-- REGISTER -->
-<?php
+<?php 
     if (isset($_POST['submitRegister'])) {
         $username = $_POST["username"]; //value from php
         $ic_num = $_POST["ic_num"];

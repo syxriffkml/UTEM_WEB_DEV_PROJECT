@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 28, 2021 at 06:18 AM
+-- Generation Time: Jun 15, 2021 at 03:59 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -30,12 +30,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `application` (
   `application_id` int(100) NOT NULL,
   `user_id` int(100) NOT NULL,
-  `app_1` varchar(1000) NOT NULL,
-  `app_2` varchar(1000) NOT NULL,
-  `app_3` varchar(1000) NOT NULL,
-  `app_4` varchar(1000) NOT NULL,
-  `app_5` varchar(1000) NOT NULL
+  `uni1` varchar(300) NOT NULL,
+  `course1` varchar(300) NOT NULL,
+  `uni2` varchar(300) NOT NULL,
+  `course2` varchar(300) NOT NULL,
+  `uni3` varchar(300) NOT NULL,
+  `course3` varchar(300) NOT NULL,
+  `uni4` varchar(300) NOT NULL,
+  `course4` varchar(300) NOT NULL,
+  `uni5` varchar(300) NOT NULL,
+  `course5` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`application_id`, `user_id`, `uni1`, `course1`, `uni2`, `course2`, `uni3`, `course3`, `uni4`, `course4`, `uni5`, `course5`) VALUES
+(1, 1, '(UIA) UNIVERSITI ISLAM ANTARABANGSA MALAYSIA', 'SARJANA MUDA SAINS KEMANUSIAAN', '(UTeM) UNIVERSITI TEKNIKAL MALAYSIA MELAKA', 'SARJANA MUDA SAINS KOMPUTER (PENGURUSAN PANGKALAN DATA)', '(UPSI) UNIVERSITI PENDIDIKAN SULTAN IDRIS', 'SARJANA MUDA PENDIDIKAN (BIMBINGAN DAN KAUNSELING)', '(UTeM) UNIVERSITI TEKNIKAL MALAYSIA MELAKA', 'SARJANA MUDA SAINS KOMPUTER (KEPINTARAN BUATAN)', '(UTeM) UNIVERSITI TEKNIKAL MALAYSIA MELAKA', 'SARJANA MUDA SAINS KOMPUTER (PEMBANGUNAN PERISIAN)');
 
 -- --------------------------------------------------------
 
@@ -46,11 +58,19 @@ CREATE TABLE `application` (
 CREATE TABLE `document` (
   `document_id` int(100) NOT NULL,
   `user_id` int(100) NOT NULL,
-  `transcript` varchar(1000) NOT NULL,
-  `result_spm` varchar(1000) NOT NULL,
-  `result_muet` varchar(1000) NOT NULL,
-  `ic_photo` varchar(1000) NOT NULL
+  `transcript` varchar(500) NOT NULL,
+  `result_spm` varchar(500) NOT NULL,
+  `result_muet` varchar(500) NOT NULL,
+  `ic_photo` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` (`document_id`, `user_id`, `transcript`, `result_spm`, `result_muet`, `ic_photo`) VALUES
+(1, 1, 'transcript1.jpg', 'result_spm1.pdf', 'result_muet1.pdf', 'ic_photo1.jpg'),
+(2, 2, 'transcript2.png', 'result_spm2.jpg', 'result_muet2.png', 'ic_photo2.png');
 
 -- --------------------------------------------------------
 
@@ -72,28 +92,33 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `ic_num`, `gender`, `email`, `password`) VALUES
-(10, 'test', '123989992222', 'Lelaki', 'testing@yahoo.com', '123'),
-(11, 'Syariff', '990226146869', 'Lelaki', 'vexr777@gmail.com', 'qwerty'),
-(12, 'kai', '123989992222', 'Perempuan', 'kai123@yahoo.com', 'kai0999'),
-(14, 'asd', '111111111111', 'Lelaki', '11a@yahoo.com', '111'),
-(15, 'crynix777', '12121212', 'Lain-lain', 'hafizi_86@hotmail.com', 'asas'),
-(16, 'eca', '745674564564', 'Perempuan', 'qsczaza@yahoo.com', 'eca111'),
-(17, '#1 GODPLAYER', '453453453453', 'Lelaki', 'hafizi_86@hotmail.com', 'qwerty'),
-(18, 'adam', '764573473475', 'Lelaki', 'adam@adamadam.com', 'adam'),
-(19, 'kai2', '788645234321', 'Lelaki', 'kai2@yahoo.com', 'kai999'),
-(20, 'vexr777@gmail.com', '990226146869', 'Lelaki', 'kai2@yahoo.com', '123'),
-(21, 'asd', '12312312', 'Lelaki', 'dg@yahoodd.co', '123'),
-(22, '1', '1', 'Lelaki', 'nalelo2929@leonvero.com', '1'),
-(23, 'Nazzzzzzzzzzzzzzzzzzz', '121212144444', 'Perempuan', 'naz@yahoo.co.uk', '123'),
-(24, 'Syariffffffffffffffffffff', '232312142352', 'Lelaki', 'syarifffffff@yahoo.com', '123'),
-(25, 'hudaaaaaaaaaaaaaaaaaa', '768687905674', 'Lelaki', 'huda@gmail.com', '123'),
-(26, 'afiq', '734563453453', 'Lelaki', 'afiqhamam@gmail.com', '123'),
-(27, 'hehe', '345353534534', 'Lain-lain', 'hehe@hehe.co', '111'),
-(28, 'gege', '23423423', 'Lain-lain', 'gege@yah.co', '123'),
-(29, 'Syarifah', '992786734333', 'Lelaki', 'syaefa@yahoo.com', '123'),
-(30, 'Syarifffffff', '212121212121', 'Lelaki', '7qwa3eyyu@yahoo.com', 'abc'),
-(31, 'hehe19287615555', '192876155554', 'Perempuan', '19287615555@yahoo.com', '123'),
-(32, 'asasas', '465745673', 'Lelaki', 'qsczaza@yahoo.com', '234');
+(1, 'Syarep', '991226146969', 'Lelaki', 'syarep1@gmail.com', 'test123'),
+(2, 'Naz', '990119122222', 'Perempuan', 'nananana@yahoo.com', '098765');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userdetail`
+--
+
+CREATE TABLE `userdetail` (
+  `detail_id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `phone1` varchar(20) NOT NULL,
+  `phone2` varchar(20) NOT NULL,
+  `birthplace` varchar(20) NOT NULL,
+  `marital_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userdetail`
+--
+
+INSERT INTO `userdetail` (`detail_id`, `user_id`, `fullname`, `address`, `phone1`, `phone2`, `birthplace`, `marital_status`) VALUES
+(1, 1, 'Muhammad Syariff Kamil Bin Sypudin ', 'Rawang, Selangor', '0176266581', '0192727232', 'Selagor', 'Bujang'),
+(2, 2, 'Naz Binti Syafiq', 'Shah Alam', '0162664389', '0124464389', 'Selagor', 'Berkahwin');
 
 --
 -- Indexes for dumped tables
@@ -118,6 +143,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `userdetail`
+--
+ALTER TABLE `userdetail`
+  ADD PRIMARY KEY (`detail_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -125,19 +156,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `application_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `application_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `document_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `document_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `userdetail`
+--
+ALTER TABLE `userdetail`
+  MODIFY `detail_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

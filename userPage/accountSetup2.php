@@ -97,6 +97,7 @@
                             </tr>
                         </table>
                         <h4>*size file tidak melebihi dari 9mb</h4>
+                        <h4>*hanya file jenis jpg, jpeg, png dan pdf sahaja</h4>
                         <div style="padding : 0px 100px;">
                             <button type="reset" class="buttonForm cancelbtn">Reset</button>
                             <button type="submit" name="submitSetup2" class="buttonForm submitbtn">Simpan</button><br><br>

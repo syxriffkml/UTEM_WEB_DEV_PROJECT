@@ -1,5 +1,6 @@
 /*
   Z-index 1 (navbar), z-index 2 (modal), .....
+  stack order element, so kedudukan modal will be on top of navbar
 */
 
 :root {
