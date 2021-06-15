@@ -71,7 +71,7 @@
                                     <label for="old_pass"><b>Password Lama :</b></label>
                                 </td>
                                 <td style="width: 60%;">
-                                    <input type="text" id="old_pass" placeholder="Masukkan Password Lama Anda" name="old_pass" required ><br>
+                                    <input type="password" id="old_pass" placeholder="Masukkan Password Lama Anda" name="old_pass" required ><br>
                                 </td>
                             </tr>
                             <tr>
